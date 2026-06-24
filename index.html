@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kotha Nishitha | Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f8f9fc;
+    --white: #ffffff;
+    --surface: #f0f4ff;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #dbeafe;
+    --accent: #7c3aed;
+    --accent-light: #ede9fe;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --sans: 'Inter', sans-serif;
+    --serif: 'Playfair Display', serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 5rem 5rem 3rem;
+    max-width: 1100px; margin: 0 auto;
+    gap: 4rem;
+  }
+  .hero-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .hero h1 span { color: var(--primary); }
+  .hero-role {
+    font-size: 14px; font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .hero-desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px; border-radius: 6px;
+    font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
+  .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+  .btn-outline:hover { background: var(--primary-light); transform: translateY(-1px); }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  .metric-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .metric-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .metric-card:first-child { grid-column: span 2; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; }
+  .metric-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .metric-num { font-size: 1.8rem; font-weight: 700; display: block; }
+  .metric-label { font-size: 11px; opacity: 0.75; margin-top: 2px; }
+  .metric-card:first-child .metric-num { font-size: 1.1rem; font-weight: 600; opacity: 1; }
+
+  /* BAR CHART MINI */
+  .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 60px; margin-top: 0.8rem; }
+  .bar { flex: 1; background: rgba(255,255,255,0.3); border-radius: 3px 3px 0 0; transition: height 1s ease; }
+  .bar:nth-child(1){height:40%} .bar:nth-child(2){height:65%} .bar:nth-child(3){height:50%}
+  .bar:nth-child(4){height:80%} .bar:nth-child(5){height:95%} .bar:nth-child(6){height:70%}
+
+  /* SECTIONS */
+  section { padding: 5rem 2.5rem; max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    color: var(--primary); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.8rem; font-weight: 700;
+    margin-bottom: 2.5rem; color: var(--text);
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; }
+  .about-text { color: var(--muted); line-height: 1.8; }
+  .about-text p + p { margin-top: 1rem; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+  .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--primary); display: block; margin-bottom: 0.2rem; }
+  .stat-label { font-size: 11px; color: var(--muted); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .skill-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.4rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: var(--primary); }
+  .skill-icon { font-size: 1.5rem; margin-bottom: 0.7rem; }
+  .skill-name { font-weight: 600; font-size: 14px; margin-bottom: 0.4rem; }
+  .skill-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.8rem; }
+  .tag {
+    font-size: 10px; font-weight: 500;
+    background: var(--primary-light); color: var(--primary);
+    border: 1px solid #bfdbfe;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .tag-purple { background: var(--accent-light); color: var(--accent); border-color: #c4b5fd; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.2rem; }
+  .project-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.8rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .project-tools {
+    font-size: 10px; font-weight: 600;
+    color: var(--primary); background: var(--primary-light);
+    border: 1px solid #bfdbfe;
+    padding: 3px 10px; border-radius: 4px;
+    display: inline-block; margin-bottom: 0.8rem;
+  }
+  .project-title { font-weight: 700; font-size: 15px; margin-bottom: 0.6rem; color: var(--text); }
+  .project-points { list-style: none; }
+  .project-points li {
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    padding: 3px 0; padding-left: 14px; position: relative;
+  }
+  .project-points li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-size: 10px; top: 4px; }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.8rem;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 1.2rem; align-items: start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .exp-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .exp-logo {
+    width: 48px; height: 48px; border-radius: 10px;
+    background: linear-gradient(135deg, #0f4c81, #1a73e8);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700; color: white;
+    font-family: var(--serif); flex-shrink: 0;
+  }
+  .exp-title { font-weight: 700; font-size: 15px; margin-bottom: 0.2rem; }
+  .exp-company { font-size: 13px; color: var(--primary); font-weight: 500; margin-bottom: 0.3rem; }
+  .exp-date { font-size: 11px; color: var(--muted); margin-bottom: 0.8rem; }
+  .exp-points { list-style: none; }
+  .exp-points li { font-size: 12px; color: var(--muted); line-height: 1.6; padding: 2px 0 2px 14px; position: relative; }
+  .exp-points li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-size: 10px; top: 4px; }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .cert-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem;
+    display: flex; gap: 0.8rem; align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cert-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+  .cert-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--primary-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .cert-name { font-weight: 600; font-size: 12px; color: var(--text); }
+  .cert-issuer { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* CONTACT */
+  .contact-box {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 16px; padding: 3rem;
+    text-align: center; color: white;
+  }
+  .contact-box h3 { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .contact-box p { opacity: 0.85; margin-bottom: 2rem; font-size: 14px; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-white { background: white; color: var(--primary); font-weight: 600; }
+  .btn-white:hover { background: var(--primary-light); transform: translateY(-1px); }
+  .btn-white-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.6); }
+  .btn-white-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 12px; color: var(--muted);
+  }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  .hero-content { opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 2rem; gap: 2rem; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Kotha Nishitha</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-label"><span class="dot"></span> Open to Freelance & Full-time</div>
+    <h1>Kotha<br><span>Nishitha</span></h1>
+    <p class="hero-role">Data Analyst · Business Analyst · BI Developer</p>
+    <p class="hero-desc">Turning raw data into clear business insights. Skilled in Power BI, Python, SQL, and Excel — with real-world experience at TCS and an MSc in Business Analytics from the University of Hertfordshire, UK.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:nishithakotha60@gmail.com" class="btn btn-outline">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="metric-card">
+      <div class="metric-icon">📊</div>
+      <span class="metric-num">Data → Insights → Decisions</span>
+      <div class="bar-chart">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">👥</div>
+      <span class="metric-num">7K+</span>
+      <span class="metric-label">Customers Analysed</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">📈</div>
+      <span class="metric-num">50K+</span>
+      <span class="metric-label">Transactions Processed</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">🎓</div>
+      <span class="metric-num">8.3</span>
+      <span class="metric-label">BTech CGPA / 10</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">🏢</div>
+      <span class="metric-num">TCS</span>
+      <span class="metric-label">Industry Experience</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label reveal">01 — About</p>
+  <h2 class="section-title reveal">Who I Am</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a Data & Business Analyst currently pursuing an MSc in Business Analytics and Consultancy at the University of Hertfordshire, UK. My BTech in Information Technology from Vels University gave me a strong technical foundation with a CGPA of 8.3/10.</p>
+      <p>I specialise in transforming complex datasets into actionable insights through interactive dashboards, exploratory data analysis, and business intelligence reporting. My internship at TCS gave me real-world exposure to data management in a corporate environment.</p>
+      <p>I'm passionate about data storytelling — making numbers meaningful for decision-makers.</p>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card"><span class="stat-num">MSc</span><span class="stat-label">Business Analytics<br>Hertfordshire, UK</span></div>
+      <div class="stat-card"><span class="stat-num">TCS</span><span class="stat-label">Industry Internship<br>India</span></div>
+      <div class="stat-card"><span class="stat-num">4+</span><span class="stat-label">Certifications<br>Besant Technologies</span></div>
+      <div class="stat-card"><span class="stat-num">3</span><span class="stat-label">Major Projects<br>Completed</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label reveal">02 — Skills</p>
+  <h2 class="section-title reveal">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Data Visualisation</div>
+      <p class="skill-desc">Building interactive dashboards and visual reports for business stakeholders</p>
+      <div class="skill-tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel Charts</span><span class="tag">Pivot Tables</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python Analytics</div>
+      <p class="skill-desc">Exploratory data analysis, statistical modelling, and data cleaning</p>
+      <div class="skill-tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">SQL & Data Management</div>
+      <p class="skill-desc">Querying, joining, and aggregating data from relational databases</p>
+      <div class="skill-tags"><span class="tag">SQL</span><span class="tag">ETL</span><span class="tag">Data Modelling</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📋</div>
+      <div class="skill-name">Business Analytics</div>
+      <p class="skill-desc">KPI reporting, statistical analysis, and business intelligence consulting</p>
+      <div class="skill-tags"><span class="tag tag-purple">EDA</span><span class="tag tag-purple">KPI Reporting</span><span class="tag tag-purple">R Studio</span><span class="tag tag-purple">Jamovi</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label reveal">03 — Projects</p>
+  <h2 class="section-title reveal">Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <span class="project-tools">Python · Power BI</span>
+      <div class="project-title">Customer Churn Analysis</div>
+      <ul class="project-points">
+        <li>Analysed 7,000+ telecom customers using Python to identify key churn drivers through EDA</li>
+        <li>Found month-to-month contract customers had 3x higher churn rate</li>
+        <li>Built interactive Power BI dashboard to support data-driven retention decisions</li>
+      </ul>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tools">Power BI · Excel · DAX</span>
+      <div class="project-title">Sales Performance Dashboard</div>
+      <ul class="project-points">
+        <li>Built end-to-end sales analytics dashboard for 50,000+ transactions across 4 regions</li>
+        <li>Dynamic filtering by product, region, and time period</li>
+        <li>DAX measures for year-on-year growth and profit margin reporting</li>
+      </ul>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tools">Python · Power BI</span>
+      <div class="project-title">HR Analytics – Employee Attrition</div>
+      <ul class="project-points">
+        <li>EDA on IBM HR dataset of 1,470 employees — uncovering attrition correlations</li>
+        <li>Revealed low job satisfaction linked to 40% higher attrition rate</li>
+        <li>Power BI dashboard presented to support cross-functional HR decisions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label reveal">04 — Experience</p>
+  <h2 class="section-title reveal">Work Experience</h2>
+  <div class="exp-card reveal">
+    <div class="exp-logo">TCS</div>
+    <div>
+      <div class="exp-title">Project Intern — Data Analyst</div>
+      <div class="exp-company">Tata Consultancy Services (TCS) — India</div>
+      <div class="exp-date">Aug 2024 – Oct 2024</div>
+      <ul class="exp-points">
+        <li>Supported data collection, tracking, and reporting for IWMP and NTR Jalasiri government projects</li>
+        <li>Documented and monitored project progress metrics across multiple operational teams</li>
+        <li>Contributed to structured data management in a large-scale corporate environment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label reveal">05 — Certifications</p>
+  <h2 class="section-title reveal">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">📊</div>
+      <div><div class="cert-name">Power BI Certification</div><div class="cert-issuer">Besant Technologies</div></div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">📗</div>
+      <div><div class="cert-name">Excel Certification</div><div class="cert-issuer">Besant Technologies</div></div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🗄️</div>
+      <div><div class="cert-name">SQL Certification</div><div class="cert-issuer">Besant Technologies</div></div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🐍</div>
+      <div><div class="cert-name">Python Certification</div><div class="cert-issuer">Besant Technologies</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box reveal">
+    <h3>Let's Work Together</h3>
+    <p>Open to freelance data analysis, dashboard projects, and full-time Data Analyst roles.</p>
+    <div class="contact-links">
+      <a href="mailto:nishithakotha60@gmail.com" class="btn btn-white">📧 Email Me</a>
+      <a href="https://www.linkedin.com/in/kotha-nishitha/" target="_blank" class="btn btn-white-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Kotha Nishitha · Data Analyst & Business Analyst · Hatfield, UK</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

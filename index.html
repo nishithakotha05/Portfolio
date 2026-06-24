@@ -27,12 +27,12 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden}
- 
+
 /* ANIMATED BG GRID */
 .bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
   background-image:linear-gradient(rgba(37,99,235,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.04) 1px,transparent 1px);
   background-size:50px 50px;}
- 
+
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(248,250,255,0.95);backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;
@@ -41,28 +41,28 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(248,250,255,0.95
 .nav-links{display:flex;gap:1.8rem;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;letter-spacing:0.03em}
 .nav-links a:hover{color:var(--primary)}
- 
+
 /* HERO */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;
   padding:6rem 3rem 3rem;max-width:1100px;margin:0 auto;gap:3rem;position:relative;z-index:1}
- 
+
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,0.1);
   border:1px solid rgba(59,130,246,0.25);color:var(--primary);font-size:11px;font-weight:600;
   padding:5px 14px;border-radius:20px;margin-bottom:1.2rem;letter-spacing:0.06em;text-transform:uppercase}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
- 
+
 .hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:400;
   line-height:1.1;margin-bottom:0.6rem;white-space:nowrap}
 .hero h1 .accent{color:var(--primary);position:relative}
 .hero h1 .accent::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;
   background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px}
- 
+
 .hero-sub{font-size:13px;color:var(--muted);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px}
 .hero-sub::before{content:'';width:24px;height:1px;background:var(--primary)}
- 
+
 .hero-desc{font-size:15px;color:#475569;line-height:1.8;margin-bottom:2rem;max-width:460px}
- 
+
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:6px;
   font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none}
@@ -70,10 +70,10 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(248,250,255,0.95
 .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,130,246,0.35)}
 .btn-outline{background:transparent;color:var(--primary);border:1px solid rgba(59,130,246,0.4)}
 .btn-outline:hover{background:var(--primary-glow);transform:translateY(-1px)}
- 
+
 /* HERO DASHBOARD VISUAL */
 .dashboard{display:flex;flex-direction:column;gap:0.8rem;opacity:0;animation:fadeUp 0.8s ease 0.4s forwards}
- 
+
 .dash-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.7rem}
 .kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;
   transition:transform 0.2s;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
@@ -88,17 +88,17 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(248,250,255,0.95
 .kpi.green .kpi-num{color:var(--green)}
 .kpi-label{font-size:10px;color:var(--muted);letter-spacing:0.04em}
 .kpi-change{font-size:9px;margin-top:4px;color:var(--green)}
- 
+
 .dash-chart{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 .chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .chart-title{font-size:11px;font-weight:600;color:var(--text)}
 .chart-legend{display:flex;gap:10px}
 .leg{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--muted)}
 .leg-dot{width:6px;height:6px;border-radius:50%}
- 
+
 /* SVG CHART */
 .chart-svg{width:100%;height:80px}
- 
+
 .dash-bottom{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem}
 .mini-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem}
 .mini-title{font-size:10px;color:var(--muted);margin-bottom:0.6rem;font-weight:600;letter-spacing:0.04em}
@@ -108,18 +108,18 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(248,250,255,0.95
 .pb-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden}
 .pb-fill{height:100%;border-radius:3px;transition:width 1.5s ease}
 .pb-val{font-size:9px;color:var(--text);width:24px;text-align:right;flex-shrink:0}
- 
+
 .donut-wrap{display:flex;align-items:center;gap:1rem}
 .donut-legend{display:flex;flex-direction:column;gap:4px}
 .dl-row{display:flex;align-items:center;gap:5px;font-size:9px;color:var(--muted)}
 .dl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
- 
+
 /* SECTIONS */
 section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-index:1}
 .section-label{font-size:10px;font-weight:700;color:var(--primary);letter-spacing:0.14em;
   text-transform:uppercase;margin-bottom:0.4rem;opacity:0.85}
 .section-title{font-family:var(--serif);font-size:1.85rem;font-weight:400;margin-bottom:2.5rem;color:var(--text)}
- 
+
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:start}
 .about-text{color:#475569;line-height:1.85}
@@ -132,7 +132,7 @@ section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-i
 .stat-num{font-size:1.5rem;font-weight:800;color:var(--primary);display:block;margin-bottom:0.2rem;
   text-shadow:0 0 20px rgba(59,130,246,0.3)}
 .stat-label{font-size:11px;color:var(--muted);line-height:1.4}
- 
+
 /* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1rem}
 .skill-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
@@ -146,7 +146,7 @@ section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-i
   border:1px solid rgba(59,130,246,0.2);padding:2px 8px;border-radius:4px;letter-spacing:0.03em}
 .tag-p{background:rgba(139,92,246,0.08);color:var(--accent);border-color:rgba(139,92,246,0.2)}
 .tag-g{background:rgba(16,185,129,0.08);color:var(--green);border-color:rgba(16,185,129,0.2)}
- 
+
 /* PROJECTS */
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:12px;
@@ -165,7 +165,7 @@ section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-i
 .project-highlight{display:inline-flex;align-items:center;gap:4px;margin-top:0.8rem;
   font-size:10px;font-weight:600;color:var(--green);background:rgba(16,185,129,0.08);
   border:1px solid rgba(16,185,129,0.2);padding:3px 10px;border-radius:4px}
- 
+
 /* EXPERIENCE */
 .exp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;
   padding:1.8rem;display:grid;grid-template-columns:auto 1fr;gap:1.4rem;
@@ -180,7 +180,7 @@ section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-i
 .exp-points{list-style:none}
 .exp-points li{font-size:11px;color:#475569;line-height:1.65;padding:3px 0 3px 14px;position:relative}
 .exp-points li::before{content:'▸';position:absolute;left:0;color:var(--primary);font-size:9px;top:5px}
- 
+
 /* CERTS */
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
 .cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
@@ -192,7 +192,7 @@ section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-i
   font-size:1rem;flex-shrink:0}
 .cert-name{font-weight:600;font-size:12px;color:var(--text)}
 .cert-issuer{font-size:10px;color:var(--muted);margin-top:2px}
- 
+
 /* CONTACT */
 .contact-box{background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:16px;
   padding:3rem;text-align:center;position:relative;overflow:hidden;color:white}
@@ -205,20 +205,22 @@ section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;position:relative;z-i
 .btn-white:hover{background:#f0f4ff;transform:translateY(-1px)}
 .btn-white-outline{background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.6)}
 .btn-white-outline:hover{background:rgba(255,255,255,0.1);transform:translateY(-1px)}
- 
+
 footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
   font-size:11px;color:var(--muted);position:relative;z-index:1}
 .divider{border:none;border-top:1px solid var(--border);margin:0;position:relative;z-index:1}
- 
+
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .hero-content{opacity:0;animation:fadeUp 0.6s ease 0.1s forwards}
- 
+
 @media(max-width:768px){
   .hero{grid-template-columns:1fr;padding:5rem 1.5rem 2rem;gap:2rem}
-  .dashboard{display:none}
-  .mobile-stats{display:grid!important}
+  .dashboard{display:flex!important;opacity:1!important;animation:none!important}
+  .dash-top{grid-template-columns:1fr 1fr 1fr}
+  .dash-bottom{grid-template-columns:1fr}
+  .mobile-stats{display:none!important}
   .about-grid{grid-template-columns:1fr}
   nav{padding:0 1rem}
   .nav-links{gap:0.8rem}
@@ -229,13 +231,12 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
   .skills-grid{grid-template-columns:1fr 1fr}
   .certs-grid{grid-template-columns:1fr 1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .dash-top{grid-template-columns:1fr 1fr 1fr}
 }
 </style>
 </head>
 <body>
 <div class="bg-grid"></div>
- 
+
 <nav>
   <div class="nav-logo">Kotha Nishitha</div>
   <ul class="nav-links">
@@ -246,7 +247,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
@@ -258,7 +259,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
       <a href="#projects" class="btn btn-primary">View Projects</a>
       <a href="mailto:nishithakotha60@gmail.com" class="btn btn-outline">Contact Me</a>
     </div>
- 
+
     <!-- MOBILE STATS — only visible on phone -->
     <div class="mobile-stats" style="display:none;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-top:1.5rem">
       <div style="background:white;border:1px solid #e2e8f0;border-radius:10px;padding:0.8rem;text-align:center;border-top:2px solid #2563eb">
@@ -275,7 +276,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
       </div>
     </div>
   </div>
- 
+
   <!-- DASHBOARD VISUAL -->
   <div class="dashboard">
     <div class="dash-top">
@@ -295,7 +296,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
         <div class="kpi-change">↑ First Class</div>
       </div>
     </div>
- 
+
     <div class="dash-chart">
       <div class="chart-header">
         <span class="chart-title">Sales Performance Overview</span>
@@ -318,7 +319,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
         <circle cx="260" cy="22" r="3" fill="#8b5cf6"/>
       </svg>
     </div>
- 
+
     <div class="dash-bottom">
       <div class="mini-card">
         <div class="mini-title">TOOL PROFICIENCY</div>
@@ -364,9 +365,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     </div>
   </div>
 </div>
- 
+
 <hr class="divider">
- 
+
 <!-- ABOUT -->
 <section id="about">
   <p class="section-label reveal">01 — About</p>
@@ -385,9 +386,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     </div>
   </div>
 </section>
- 
+
 <hr class="divider">
- 
+
 <!-- SKILLS -->
 <section id="skills">
   <p class="section-label reveal">02 — Skills</p>
@@ -419,9 +420,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     </div>
   </div>
 </section>
- 
+
 <hr class="divider">
- 
+
 <!-- PROJECTS -->
 <section id="projects">
   <p class="section-label reveal">03 — Projects</p>
@@ -459,9 +460,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     </div>
   </div>
 </section>
- 
+
 <hr class="divider">
- 
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <p class="section-label reveal">04 — Experience</p>
@@ -480,9 +481,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     </div>
   </div>
 </section>
- 
+
 <hr class="divider">
- 
+
 <!-- CERTS -->
 <section id="certifications">
   <p class="section-label reveal">05 — Certifications</p>
@@ -494,9 +495,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     <div class="cert-card reveal"><div class="cert-icon">🐍</div><div><div class="cert-name">Python Certification</div><div class="cert-issuer">Besant Technologies</div></div></div>
   </div>
 </section>
- 
+
 <hr class="divider">
- 
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-box reveal">
@@ -508,9 +509,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
     </div>
   </div>
 </section>
- 
+
 <footer>Kotha Nishitha · Data Analyst & Business Analyst · Hatfield, UK</footer>
- 
+
 <script>
 const reveals=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver((entries)=>{
